@@ -15,7 +15,7 @@ HEARTBEAT_INTERVAL = 15 # seconds
 # init
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level=logging.INFO)
 allowed_prefixes = []
-conv = Ansi2HTMLConverter(inline=True)
+conv = Ansi2HTMLConverter(inline=True, scheme='mint-terminal', linkify=True)
 
 
 async def view_log(websocket, path):
