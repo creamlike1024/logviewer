@@ -1,0 +1,9 @@
+version: '3.1'
+services:
+  logviewer:
+    image: creamlike1024/logviewer
+    restart: always
+    ports:
+      - 9999:9999
+    volumes:
+      - ./logs:/logs
