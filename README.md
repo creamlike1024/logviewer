@@ -34,3 +34,18 @@ python -m http.server
 ```
 
 Create `/tmp/demo.log` file and browse `http://localhost:8000/demo.html`, you will see the content of the log file. Append logs to this file and the content will be shown in browser immediately.
+
+## Nginx
+rewrite
+```
+location /log-ws {
+        proxy_pass         "http://127.0.0.1:9999";
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host $host;
+        proxy_connect_timeout 60m;
+        proxy_send_timeout 60m;
+        proxy_read_timeout 60m;
+        rewrite  ^/log-ws/(.*) /logs/$1 break;
+```
